@@ -13,8 +13,14 @@ const PORT = process.env.PORT || 3000;
 //GET localhost:3000/
 // app.get(route path, callback function to handle request and response)
 app.get('/', (request, response) => {
-    response.send("Hello world, server building in progress...")
+    response.send("Hello world, server building in progress...");
 })
+
+const pokemonRouter = require('./controllers/PokemonController');
+app.use("/pokemon", pokemonRouter);
+
+
+
 
 // Configure the server
 
