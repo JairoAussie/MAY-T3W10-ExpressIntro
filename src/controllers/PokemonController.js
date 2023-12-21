@@ -19,6 +19,28 @@ router.get("/pikachu", async (request, response) => {
     })
 })
 
+//GET /pokemon/25 -> 25 as a pokemonId, can be a different one
+router.get("/:pokemonId", async (request, response) => {
+    let pkId = request.params.pokemonId;
+    let result = await fetch("https://pokeapi.co/api/v2/pokemon/" + pkId);
+    let data = await result.json();
+
+    response.json({
+        pokemonName: data.name
+    })
+})
+
+//POST /pokemon/25 -> 25 as a pokemonId, can be a different one
+router.post("/:pokemonId", async (request, response) => {
+    let pkId = request.params.pokemonId;
+    let result = await fetch("https://pokeapi.co/api/v2/pokemon/" + pkId);
+    let data = await result.json();
+
+    response.json({
+        pokemonName: data.name
+    })
+})
+
 router.post('/', (req, res) => {
     res.json({
         message: "POST request received!"
